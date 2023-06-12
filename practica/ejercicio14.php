@@ -1,23 +1,27 @@
 <?php
 /**
-*Crea una función que dado el dia de la semana
-*en número(1-7), nos devuelva el dia de la semana en texto(Lunes,martes, ...)
+*Dado un texto $data que contiene una frase con 
+*números separados por el caracter ':'
+*Mostrar por pantalla la suma de todos esos numeros
+* Pasos:
+* - Convierte primero la cadena de texto a un array (usa la funcion explode https://www.php.net/manual/es/ref.strings.php)
+* - Recorre el array y ve sumando sus distintos valores
+* - Muestra por pantalla el resultado
+*/
 
-  */
-function getNameOfWeek($dayNumber){
-  /*if($dayNumber==1) return 'Lunes';
-  if($dayNumber==2) return 'Martes';
-  if($dayNumber==3) return 'Miercoles';
-  if($dayNumber==4) return 'Jueves';
-  if($dayNumber==5) return 'Viernes';
-  if($dayNumber==6) return 'Sabado';
-  if($dayNumber==7) return 'Domingo';*/
-  $days=array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-  //TODO usar excepciones
-  if($dayNumber == null) return 'No has pasado el día de la semana';
-  if($dayNumber <1 || $dayNumber>count($days)) return 'Error en el día de la semana';
+$data = '3:56:2.5:33';
 
-  return $days[$dayNumber-1];
+// Convierte la cadena de texto en un array utilizando el carácter ':' como separador
+$array = explode(':', $data);
+
+// Inicializa una variable para almacenar la suma de los números
+$suma = 0;
+
+// Recorre el array y suma sus valores
+foreach ($array as $valor) {
+    $suma += floatval($valor); // Convierte cada valor a número y lo suma a la variable $suma
 }
 
-echo getNameOfWeek(3);
+// Muestra por pantalla el resultado
+echo "La suma de los números es: " . $suma;
+?>
